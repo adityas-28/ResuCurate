@@ -25,7 +25,7 @@ function Pricing() {
       description:
         "Ideal for active job seekers applying to multiple roles or industries.",
       features: [
-        "Up to 10 Resume Versions",
+        "Up to 5 Resume Versions",
         "Premium AI Bullet Generation",
         "Industry-Specific Optimization",
         "LaTeX-Based High-Quality PDF Export",

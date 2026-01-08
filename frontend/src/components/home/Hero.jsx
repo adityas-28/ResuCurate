@@ -28,16 +28,49 @@ export default function Hero({ border, boxShadow }) {
         compelling bullet points from your experience
       </p>
 
-      <motion.button
-        style={{ border, boxShadow }}
-        whileHover={{ scale: 1.015 }}
-        whileTap={{ scale: 0.985 }}
-        className="group relative flex w-fit items-center gap-1.5 rounded-full bg-black px-4 py-2 text-gray-50 transition-colors hover:bg-blue-950/50"
-      >
-        {" "}
-        Start free trial{" "}
-        <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />{" "}
-      </motion.button>
+      <>
+        <style>{`
+    @keyframes rotate {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+
+    .rainbow {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: 9999px;
+    }
+
+    .rainbow::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      z-index: -1;
+      background-image: linear-gradient(#FF0A7F, #780EFF);
+      filter: blur(8px);
+      animation: rotate 4s linear infinite;
+    }
+  `}</style>
+
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="rainbow p-0.5"
+        >
+          <motion.button
+            className="group relative z-10 flex items-center gap-1.5
+        rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white"
+          >
+            Start free trial
+            <FiArrowRight
+              className="transition-transform duration-300
+          group-hover:-rotate-45 group-active:-rotate-12"
+            />
+          </motion.button>
+        </motion.div>
+      </>
 
       <h6
         className="max-w-3xl text-center text-3xl sm:text-4xl md:text-4xl mt-30 font-medium leading-tight

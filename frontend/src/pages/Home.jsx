@@ -15,7 +15,7 @@ import Features from "../components/home/Features";
 import Footer from "../components/home/Footer";
 import Pricing from "../components/home/Pricing";
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS_TOP = ["#660000", "#20124d", "#274e13", "#4c1130", "#1E67C6", "#DD335C", "#274e13"];
 
 export default function Home() {
   const color = useMotionValue(COLORS_TOP[0]);
@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     animate(color, COLORS_TOP, {
       ease: "easeInOut",
-      duration: 10,
+      duration: 35,
       repeat: Infinity,
       repeatType: "mirror",
     });
@@ -33,15 +33,15 @@ export default function Home() {
   radial-gradient(
     100% 60% at 50% 0%,
     ${color} 0%,
-    transparent 51%
+    transparent 55%
   ),
   radial-gradient(
     125% 105% at 50% 0%,
-    #020617 50%,
-    ${color}
-    transparent 50%
+    rgba(2, 6, 23, 1) 45%,
+    ${color} 100%
   )
 `;
+
 
   const border = useMotionTemplate`1px solid ${color}`;
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
