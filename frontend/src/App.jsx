@@ -13,12 +13,14 @@ import Layout from "./pages/Layout";
 // import EditTemplate from './pages/EditTemplate'
 
 function App() {
-  return ( 
+  return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
 
         <Route path="app" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="builder/:resumeId" element={<ResuBuilder />} />
         </Route>

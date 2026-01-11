@@ -151,10 +151,10 @@ function Features() {
                 }`}
       </style>
 
-      <section className="mt-15 py-20 px-4 flex flex-col justify-center items-center gap-6">
-        <button className="px-4 h-8 border border-gray-800 text-slate-200 text-xs rounded-lg">
+      <section className="mt-12 py-20 px-4 flex flex-col justify-center items-center gap-6">
+        {/* <button className="px-4 h-8 border border-gray-800 text-slate-200 text-xs rounded-lg">
           Features
-        </button>
+        </button> */}
         <h2
           className="text-3xl md:text-[40px]/12 max-w-lg text-center font-medium
           bg-gradient-to-r from-fuchsia-200 via-white to-emerald-400
