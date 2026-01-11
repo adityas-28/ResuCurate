@@ -50,7 +50,7 @@ function Pricing() {
   const handlePurchase = async (planId) => {};
   return (
     <>
-      <div className="w-full max-w-6xl mx-auto z-20 max-md:px-4">
+      <div className="w-full max-w-6xl mx-auto z-20 max-md:px-4 mt-15">
         <div className="pt-14 py-4 px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
             {/* Intro Column */}

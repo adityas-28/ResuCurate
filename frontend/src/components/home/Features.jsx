@@ -151,7 +151,7 @@ function Features() {
                 }`}
       </style>
 
-      <section className="mt-12 py-20 px-4 flex flex-col justify-center items-center gap-6">
+      <section className="mt-20 py-20 px-4 flex flex-col justify-center items-center gap-6">
         {/* <button className="px-4 h-8 border border-gray-800 text-slate-200 text-xs rounded-lg">
           Features
         </button> */}

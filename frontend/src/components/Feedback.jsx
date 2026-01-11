@@ -10,7 +10,7 @@ const Feedback = () => {
                     font-family: "Poppins", sans-serif;
                 }
             `}</style>
-      <section className="relative border rounded-3xl mt-35 flex flex-col md:flex-row justify-center px-4 py-20 gap-20">
+      <section className="relative border rounded-3xl mt-45 flex flex-col md:flex-row justify-center px-4 py-20 gap-20">
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none mb-10 size-140  rounded-full blur-[200px]"></div>
 
         <div className="text-center md:text-left mt-20">

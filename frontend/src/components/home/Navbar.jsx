@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function Navbar() {
+
+export default function Navbar({
+  onHomeClick,
+  onFeaturesClick,
+  onPricingClick,
+  onFeedbackClick,
+}) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <nav className="absolute top-6 left-1/2 z-50 flex h-12 w-[calc(100%-3rem)] max-w-6xl -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-white/20 bg-black/40 px-4 text-xs backdrop-blur-md md:w-auto">
+      <nav className="fixed top-6 left-1/2 z-50 flex h-12 w-[calc(100%-3rem)] max-w-6xl -translate-x-1/2 items-center justify-between gap-4 rounded-full border border-white/20 bg-black/40 px-4 text-xs backdrop-blur-md md:w-auto">
         {/* <a href="#" className="flex-shrink-0">
           {/* <svg
             width="24"
@@ -29,24 +35,37 @@ export default function Navbar() {
           />
         </Link>
         <div className="hidden gap-6 md:flex">
-          {["Home", "Features", "Pricing", "Get in Touch"].map((item) => (
-            <a key={item} href="#" className="group relative overflow-hidden">
-              <span className="block transition-transform duration-300 group-hover:-translate-y-full text-sm hover:text-indigo-400 ">
-                {item}
+          {[
+            { label: "Home", onClick: onHomeClick },
+            { label: "Features", onClick: onFeaturesClick },
+            { label: "Pricing", onClick: onPricingClick },
+            { label: "Get in Touch", onClick: onFeedbackClick },
+          ].map(({ label, onClick }) => (
+            <button
+              key={label}
+              onClick={onClick}
+              className="group relative overflow-hidden text-left"
+            >
+              <span className="block transition-transform duration-300 group-hover:-translate-y-full text-sm hover:text-indigo-400">
+                {label}
               </span>
-              <span className="absolute left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full ">
-                {item}
+              <span className="absolute left-0 top-full block transition-transform duration-300 group-hover:-translate-y-full">
+                {label}
               </span>
-            </a>
+            </button>
           ))}
         </div>
+
         <div className="ml-auto hidden items-center gap-4 md:flex">
           {/* <button className="rounded-full border border-slate-600 px-4 py-2 text-sm font-medium transition hover:bg-slate-800">
             Contact
           </button> */}
-          <button className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black shadow-[0px_0px_30px_7px] shadow-white/50 transition duration-300 hover:bg-slate-100 hover:shadow-[0px_0px_30px_14px] hover:shadow-white/50">
+          <Link
+            to="/login"
+            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black shadow-[0px_0px_30px_7px] shadow-white/50 transition duration-300 hover:bg-slate-100 hover:shadow-[0px_0px_30px_14px] hover:shadow-white/50"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
         <button
           onClick={() => setOpen((prev) => !prev)}
@@ -83,29 +102,31 @@ export default function Navbar() {
       {open && (
         <div className="fixed inset-0 top-20 z-40 overflow-y-auto bg-black/95 backdrop-blur-md md:hidden">
           <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-start gap-6 px-6 py-8">
-            {["Products", "Stories", "Pricing", "Contact Us"].map((item) => (
-              <a
-                key={item}
-                href="#"
+            {[
+              { label: "Home", onClick: onHomeClick },
+              { label: "Features", onClick: onFeaturesClick },
+              { label: "Pricing", onClick: onPricingClick },
+              { label: "Get in Touch", onClick: onFeedbackClick },
+            ].map(({ label, onClick }) => (
+              <button
+                key={label}
+                onClick={() => {
+                  onClick?.();
+                  setOpen(false);
+                }}
                 className="text-lg font-medium text-white transition-colors hover:text-indigo-400"
-                onClick={() => setOpen(false)}
               >
-                {item}
-              </a>
+                {label}
+              </button>
             ))}
             <div className="mt-4 flex flex-col items-center gap-4">
-              {/* <button
-                className="w-full rounded-full border border-slate-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
-                onClick={() => setOpen(false)}
-              >
-                Contact
-              </button> */}
-              <button
-                className="w-full rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-[0px_0px_30px_7px] shadow-white/50 transition duration-300 hover:bg-slate-100 hover:shadow-[0px_0px_30px_14px] hover:shadow-white/50"
+              <Link
+                to="/app"
+                className="w-full rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-[0px_0px_30px_7px] shadow-white/50 transition duration-300 hover:bg-slate-100 hover:shadow-[0px_0px_30px_14px] hover:shadow-white/50 text-center"
                 onClick={() => setOpen(false)}
               >
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>

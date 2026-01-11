@@ -1,5 +1,8 @@
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+const MotionLink = motion(Link);
 
 export default function Hero({ border, boxShadow }) {
   const logos = [
@@ -57,18 +60,19 @@ export default function Hero({ border, boxShadow }) {
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="rainbow p-0.5"
+          className="rainbow p-0.5 inline-block"
         >
-          <motion.button
+          <MotionLink
+            to="/login?state=SignUp"
             className="group relative z-10 flex items-center gap-1.5
-        rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white"
+      rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white"
           >
             Start free trial
             <FiArrowRight
               className="transition-transform duration-300
-          group-hover:-rotate-45 group-active:-rotate-12"
+        group-hover:-rotate-45 group-active:-rotate-12"
             />
-          </motion.button>
+          </MotionLink>
         </motion.div>
       </>
 
