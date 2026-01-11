@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { X } from "lucide-react";
 
 const Feedback = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+    e.target.reset();
+  };
+
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 5000); // Auto-close after 5 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
+
   return (
     <>
       <style>{`
@@ -45,7 +64,7 @@ const Feedback = () => {
         </div>
 
         <div className="w-full max-w-lg bg-[#00A63E]/0 backdrop-blur-sm border border-white/10 rounded-xl p-8">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label className="block text-white text-sm mb-2">Name</label>
               <input
@@ -89,6 +108,47 @@ const Feedback = () => {
             </div>
           </form>
         </div>
+
+        {/* Thank You Popup */}
+        {showPopup && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+            <div className="relative bg-[#0b1020] border border-white/10 rounded-2xl shadow-2xl p-8 max-w-md mx-4">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+                aria-label="Close"
+              >
+                <X className="size-5 text-slate-300" />
+              </button>
+
+              <div className="text-center">
+                <div className="mx-auto mb-4 flex items-center justify-center size-16 rounded-full bg-green-500/10">
+                  <svg
+                    className="size-8 text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  Thank You!
+                </h2>
+
+                <p className="text-slate-400">
+                  Thanks for helping us build a better ResuCurate.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     </>
   );

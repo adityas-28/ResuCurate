@@ -1,6 +1,8 @@
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import MagnetButton from "./MagnetButton";
+import { X } from "lucide-react";
 
 const MotionLink = motion(Link);
 
@@ -56,25 +58,71 @@ export default function Hero({ border, boxShadow }) {
       animation: rotate 4s linear infinite;
     }
   `}</style>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          className="rainbow p-0.5 inline-block"
-        >
-          <MotionLink
-            to="/login?state=SignUp"
-            className="group relative z-10 flex items-center gap-1.5
-      rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white"
+        <MagnetButton padding={50} disabled={false} magnetStrength={8}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="rainbow p-0.5 inline-block"
           >
-            Start free trial
-            <FiArrowRight
-              className="transition-transform duration-300
+            <MotionLink
+              to="/login?state=SignUp"
+              className="group relative z-10 flex items-center gap-1.5
+      rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white"
+            >
+              <p>Start free trial</p>
+
+              <FiArrowRight
+                className="transition-transform duration-300
         group-hover:-rotate-45 group-active:-rotate-12"
-            />
-          </MotionLink>
-        </motion.div>
+              />
+            </MotionLink>
+          </motion.div>
+        </MagnetButton>
+        {/* <MagnetButton padding={50} disabled={false} magnetStrength={50}>
+          <p>Star React Bits on GitHub!</p>
+        </MagnetButton> */}
       </>
+
+      {/* Coming Soon Section */}
+      <div className="fixed top-21 text-sm left-1/2 z-50 w-[95%] max-w-3xl -translate-x-1/2 bg-sky-700 rounded-4xl ">
+        <div className="flex items-center justify-between gap-4 rounded-2xl  px-3 py-2 backdrop-blur-xl border border-white/10 shadow-lg ">
+          {/* Left content */}
+          <div className="flex items-center gap-3 text-sm">
+            <div className="flex h-9 w-9 items-center justify-center rounded-4xl bg-blue-950/100 text-blue-900">
+              🚀
+            </div>
+
+            <div className="leading-tight">
+              <p className="text-sm font-semibold text-white">
+                ResuCurate is almost ready!
+              </p>
+              <p className="text-xs text-gray-300">
+                We’re polishing the final details. Get notified when ResuCurate
+                is ready.
+              </p>
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-3 bg">
+            <Link
+              to="/notify"
+              className="rounded-3xl border-2 border-dashed border-black bg-blue-950 text-white px-4 py-2 text-xs font-semibold uppercase text-black transition-all duration-300 
+hover:translate-x-[-3px] hover:translate-y-[-3px] hover:rounded-2xl hover:shadow-[3px_3px_0px_black] 
+active:translate-x-0 active:translate-y-0 active:rounded-3xl active:shadow-none"
+            >
+              Notify me →
+            </Link>
+
+            <button
+              onClick={(e) => e.currentTarget.closest("div.fixed")?.remove()}
+              className="text-white hover:text-white transition"
+            >
+              <X size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
 
       <h6
         className="max-w-3xl text-center text-3xl sm:text-4xl md:text-4xl mt-30 font-medium leading-tight

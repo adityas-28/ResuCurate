@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Preview from "./pages/Preview";
 import ResuBuilder from "./pages/ResuBuilder";
 import Layout from "./pages/Layout";
+import Notify from "./components/Notify";
+import NotFound from "./components/NotFound";
 // import Settings from './pages/Settings'
 // import Templates from './pages/Templates'
 // import NewTemplate from './pages/NewTemplate'
@@ -27,6 +29,8 @@ function App() {
 
         <Route path="view/:resumeId" element={<Preview />} />
         <Route path="login" element={<Login />} />
+        <Route path="notify" element={<Notify />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* <Route path='/builder/:resumeId/preview' element={<Preview />} />
         <Route path='/builder/:resumeId/edit' element={<ResuBuilder />} />
